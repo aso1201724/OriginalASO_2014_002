@@ -2,12 +2,18 @@ package jp.ac.st.asojuku.original2014002;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity implements View.OnClickListener {
+
+	SQLiteDatabase sdb = null;
+	MySQLiteOpenHelper helper = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				//ボタン変数にリスナーを登録する
 				btn3.setOnClickListener(this);
 
+				if(sdb == null) {
+					helper = new MySQLiteOpenHelper(getApplicationContext());
+				}
+				try{
+					sdb = helper.getWritableDatabase();
+				}catch(SQLiteException e){
+					return;
+				}
 	}
 
 
@@ -49,11 +63,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			//次画面のアクティビティ起動
 			startActivity(intent);
 			break;
-		case R.id.btn2:
+		case R.id.btn2://登録
+			EditText etv = (EditText)findViewById(R.id.edtMsg);
+			String inputMsg = etv.getText().toString();
+
+			if(inputMsg!=null && !inputMsg.isEmpty()){
+				helper.insertHitokoto(sdb,  inputMsg);
+			}
+			etv.setText("");
 			break;
-		case R.id.btn3:
+		case R.id.btn3://チェック
+
+			String strHitokoto = helper.selectRandomHitokoto(sdb);
+
 			//インテントのインスタンス生成
 			intent = new Intent(MainActivity.this, HitokotoActivity.class);
+
+			intent.putExtra("hitokoto", strHitokoto);
 			//次画面のアクティビティ起動
 			startActivity(intent);
 			break;
