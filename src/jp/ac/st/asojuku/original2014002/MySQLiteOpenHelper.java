@@ -59,7 +59,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
 	public String selectRandomHitokoto(SQLiteDatabase db){
 		String rtString = null;
-		String sqlstr = " SELECT _id, FROM Hitokoto ORDER BY RANDOM(); ";
+		String sqlstr = " SELECT _id, phrase FROM Hitokoto ORDER BY RANDOM(); ";
 				try {
 						SQLiteCursor cursor = (SQLiteCursor)db.rawQuery(sqlstr, null);
 						if(cursor.getCount()!=0){
@@ -70,7 +70,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 				} catch (SQLException e) {
 					Log.e("ERROR", e.toString());
 				} finally{
-					db.endTransaction();
 				}
 		return rtString;
 	}
