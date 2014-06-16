@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		// TODO 自動生成されたメソッド・スタブ
 		Intent intent = null;
 		switch(v.getId()) { //どのボタンが押されたか判定
-		case R.id.btn1: //binOKが押された
+		case R.id.btn1: //メンテナンスが押された
 			//インテントのインスタンス生成
 			intent = new Intent(MainActivity.this, MaintenanceActivity.class);
 			//次画面のアクティビティ起動
