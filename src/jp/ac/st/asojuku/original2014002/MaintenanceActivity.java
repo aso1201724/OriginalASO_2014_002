@@ -1,7 +1,6 @@
 package jp.ac.st.asojuku.original2014002;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -36,13 +35,14 @@ AdapterView.OnItemClickListener
 	public void onClick(View v) {
 		// TODO 自動生成されたメソッド・スタブ
 
-		Intent intent = null;
+		//Intent intent = null;
 		switch(v.getId()) { //どのボタンが押されたか判定
 		case R.id.mbtn1: //binOKが押された
+			finish();
 			//インテントのインスタンス生成
-			intent = new Intent(MaintenanceActivity.this, MainActivity.class);
+			//intent = new Intent(MaintenanceActivity.this, MainActivity.class);
 			//次画面のアクティビティ起動
-			startActivity(intent);
+			//startActivity(intent);
 			break;
 		case R.id.mbtn2:
 			break;
