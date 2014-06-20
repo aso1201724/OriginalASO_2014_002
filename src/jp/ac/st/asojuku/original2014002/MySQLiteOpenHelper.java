@@ -95,7 +95,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
 	public void deleteHitokoto(SQLiteDatabase db, int id){
 
-		String sqlstr = " DELETE FROM Hitokoto wwhere _id = " + id + ";";
+		String sqlstr = " DELETE FROM Hitokoto where _id = " + id + ";";
 
 				try {
 
