@@ -54,6 +54,7 @@ AdapterView.OnItemClickListener
 				this.lastPosition = -1;
 			}
 			else{
+				//なければ、トースト（簡易メッセージ）を表示
 				Toast.makeText(MaintenanceActivity.this, "削除する行を選んでください", Toast.LENGTH_SHORT).show();
 			}
 			break;
